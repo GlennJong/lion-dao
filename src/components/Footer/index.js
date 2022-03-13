@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { _w } from '../../utils/wordingSystem';
 import { colors } from '../../constants/colors';
+import useWording from '../../utils/useWording';
 
 const Footer = () => {
-  const wording = _w('footer');
+  const wording = useWording('footer');
   return (
     <Root>
       <svg width="155.681" height="114.793" viewBox="0 0 155.681 114.793">

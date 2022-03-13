@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import styled, { css } from 'styled-components';
-import { _w } from '../../utils/wordingSystem';
 import { colors } from '../../constants/colors';
 import MintBlock from './MintBlock';
 import Container from '../../components/Container';
 import { respondTo } from "../../utils/responsive";
+import useWording from "../../utils/useWording";
 // import useConnectWallet from "../../utils/useConnectWallet";
 // import Button from "../../components/Button";
 
 const MintSection = () => {
-  const wording = _w('homepage.mint');
+  const wording = useWording('homepage.mint')
   const status = 'connect';
   // const status = 'connect';
   // const { status, onConnect } = useConnectWallet();

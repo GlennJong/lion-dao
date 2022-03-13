@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../constants/colors';
 import { respondTo } from '../../utils/responsive';
-import { _w } from '../../utils/wordingSystem';
 import { Twitter, Facebook, Discord, Opensea } from '../../components/Icons';
 
 const SocialItem = ({icon, children, ...props}) => {

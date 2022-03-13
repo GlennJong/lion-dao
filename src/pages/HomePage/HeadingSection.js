@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Link from '../../components/CustomLink';
 import SocialItem from '../../components/SocialItem';
 import { colors } from '../../constants/colors';
-import { respondTo } from '../../utils/responsive';
-import { _w } from '../../utils/wordingSystem';
+import useWording from '../../utils/useWording';
 
 const HeadingSection = () => {
-  const wording = _w('homepage.heading');
+  const wording = useWording('homepage.heading');
   return (
     <Root>
       <Heading>
@@ -20,7 +19,7 @@ const HeadingSection = () => {
         ) }
       </Right>
       <Mint>
-        <Link to="/">Mint</Link>
+        <Link to="/?to=mint">Mint</Link>
       </Mint>
     </Root>
   )

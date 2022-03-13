@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import LinksList from './LinksList';
 import ConnectButton from './ConnectButton';
 import LanguageButton from './LanguageButton';
-import { _w } from '../../utils/wordingSystem';
 import { respondTo } from '../../utils/responsive';
 import { lockWindow } from '../../utils/methods';
 import { colors } from '../../constants/colors';
+import useWording from '../../utils/useWording';
 
 const Header = () => {
-  const wording = _w('header');
+  const wording = useWording('header');
 
   const headerRef = useRef(null);
   const fixederRef = useRef();

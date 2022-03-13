@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../constants/colors';
 import Carousel from '../../components/Carousel';
-import { _w } from '../../utils/wordingSystem';
+import useWording from '../../utils/useWording';
 
 const IntroSection = () => {
-  const wording = _w('homepage.intro');
+  const wording = useWording('homepage.intro');
   return (
     <Root>
       <Carousel>

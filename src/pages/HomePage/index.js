@@ -6,11 +6,11 @@ import StorySection from './StorySection';
 import TeamSection from './TeamSection';
 import MintSection from './MintSection';
 import SocialSection from './SocialSection';
-import { _w } from '../../utils/wordingSystem';
 import { colors } from '../../constants/colors';
+import useWording from '../../utils/useWording';
 
 const HomePage = () => {
-  const wording = _w('homepage');
+  const wording = useWording('homepage');
   return (
     <Root>
       <HeadingSection />

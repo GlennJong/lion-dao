@@ -2,10 +2,10 @@ import React, { useRef, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { colors } from '../../constants/colors';
 import { scrollTo } from '../../utils/scrollTo';
-import { _w } from '../../utils/wordingSystem';
+import useWording from '../../utils/useWording';
 
 const StorySection = () => {
-  const wording = _w('homepage.story');
+  const wording = useWording('homepage.story');
   const rootRef = useRef(null);
   const currentIndexRef = useRef(0);
   const [ currentIndex, setCurrentIndex ] = useState(0);
@@ -122,6 +122,8 @@ const MainItem = styled.div`
     img {
       display: block;
       margin: auto;
+      width: 100%;
+      height: auto;
       margin-bottom: 30px;
       box-shadow: 16px 16px 0px ${colors.mainColor};
     }

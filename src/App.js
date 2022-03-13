@@ -16,6 +16,7 @@ import LanguageHelper from './components/LanguageHelper';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import Header from './components/Header';
+import styled from 'styled-components';
 
 const reducer = combineReducers({
   app: appStore.reducer,
@@ -27,7 +28,7 @@ const store = createStore(reducer);
 
 
 const App = ({ wording, Router = BrowserRouter }) => {
-  const wordingLoaded = useWordingLoader(wording ?? '/wordings/en.json');
+  const wordingLoaded = useWordingLoader(wording ?? '/wordings/main.json');
 
   
   return (
@@ -43,7 +44,7 @@ const App = ({ wording, Router = BrowserRouter }) => {
       <GlobalStyle/>
       <Router>
         { !wordingLoaded &&
-          <div>Loading...</div>
+          <Cover></Cover>
         }
         { wordingLoaded &&
           <>
@@ -62,5 +63,8 @@ const App = ({ wording, Router = BrowserRouter }) => {
     </Provider>
   );
 }
+
+const Cover = styled.div`
+`
 
 export default App;

@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import Container from '../../components/Container';
 import { colors } from '../../constants/colors';
 import { respondTo } from '../../utils/responsive';
-import { _w } from '../../utils/wordingSystem';
 import SocialItem from '../../components/SocialItem';
+import useWording from '../../utils/useWording';
 
 const SocialSection = () => {
-  const wording = _w('homepage.social');
+  const wording = useWording('homepage.social');
   return (
     <Root id="community">
       <Container>

@@ -2,10 +2,10 @@ import React, { useRef, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import Container from '../../components/Container';
 import { colors } from '../../constants/colors';
-import { _w } from '../../utils/wordingSystem';
+import useWording from '../../utils/useWording';
 
 const TeamSection = () => {
-  const wording = _w('homepage.team');
+  const wording = useWording('homepage.team');
   const rootRef = useRef(null);
   const [ currentIndex, setCurrentIndex ] = useState(0);
 
