@@ -1,24 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { useWordingLoader } from './utils/wordingSystem';
 
-function App() {
+import appStore from './store/app';
+import language from './store/language';
+import walletStatus from './store/walletStatus';
+
+import GlobalStyle from './components/GlobalStyle';
+import AutoScrollHelper from './components/AutoScrollHelper';
+import ScrollToTopHelper from './components/ScrollToTopHelper';
+import LanguageHelper from './components/LanguageHelper';
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import Header from './components/Header';
+
+const reducer = combineReducers({
+  app: appStore.reducer,
+  language: language.reducer,
+  walletStatus: walletStatus.reducer,
+});
+
+const store = createStore(reducer);
+
+
+const App = ({ wording, Router = BrowserRouter }) => {
+  const wordingLoaded = useWordingLoader(wording ?? '/wordings/en.json');
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <LanguageHelper />
+      <Helmet>
+        <title>Block Banana</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet"></link>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet"></link>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet"></link>
+      </Helmet>
+      <GlobalStyle/>
+      <Router>
+        { !wordingLoaded &&
+          <div>Loading...</div>
+        }
+        { wordingLoaded &&
+          <>
+            <ScrollToTopHelper />
+            <AutoScrollHelper />
+            <Header />
+            <Switch>
+              <Route path="/" exact={true} component={HomePage} />
+              <Route path="/en" exact={true} component={HomePage} />
+              <Route path="/zh-TW" exact={true} component={HomePage} />
+            </Switch>
+            <Footer />
+          </>
+        }
+      </Router>
+    </Provider>
   );
 }
 
