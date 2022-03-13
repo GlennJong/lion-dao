@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../constants/colors';
+import { respondTo } from '../../utils/responsive';
 import useWording from '../../utils/useWording';
 
 const Footer = () => {
@@ -23,12 +24,22 @@ const Root = styled.div`
   padding: 100px 0;
   text-align: center;
   background: #DDD4C6;
+  ${respondTo.md} {
+    padding-bottom: 150px;
+  }
   svg {
     margin-bottom: 28px;
+    ${respondTo.md} {
+      width: 115px;
+      margin-bottom: 16px;
+    }
   }
   p {
     font-size: 16px;
     color: ${colors.green};
+    ${respondTo.md} {
+      font-size: 12px;
+    }
   }
 `
 

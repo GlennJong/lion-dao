@@ -20,7 +20,6 @@ const Item = styled.a`
   display: flex;
   align-items: center;
   color: ${colors.green};
-  margin: 0 30px;
   width: 30px;
   transition: opacity .3s ease;
   ${respondTo.md} {

@@ -136,12 +136,12 @@
         { "icon": "Discord", "link": "https://discord.gg/vNDdUqpzbF" },
         { "icon": "Twitter", "link": "https://twitter.com/" },
         { "icon": "Facebook", "link": "https://twitter.com/" }
-      ]
+      ],
+      "mint_button": "MINT LIONDAO NFT"
     },
     "footer": {
       "copyright": "・2022  LIONDAO・"
     }
-
   },
   "zh-TW": {
     "header": {
@@ -280,7 +280,8 @@
         { "icon": "Discord", "link": "https://discord.gg/vNDdUqpzbF" },
         { "icon": "Twitter", "link": "https://twitter.com/" },
         { "icon": "Facebook", "link": "https://twitter.com/" }
-      ]
+      ],
+      "mint_button": "MINT LIONDAO NFT"
     },
     "footer": {
       "copyright": "・2022  LIONDAO・"

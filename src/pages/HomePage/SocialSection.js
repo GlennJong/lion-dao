@@ -33,6 +33,12 @@ const Root = styled.div`
 const SocialBlock = styled.div`
   border-top: 1px solid ${colors.brown};
   padding: 200px 0;
+  box-sizing: border-box;
+  ${respondTo.md} {
+    margin: 0 60px;
+    padding: 140px 0;
+    width: calc(100% - 120px);
+  }
 
 `
 
@@ -41,7 +47,11 @@ const Title = styled.div`
   text-align: center;
   font-size: 32px;
   text-transform: uppercase;
-  color: ${colors.brown};
+  color: ${colors.green};
+  ${respondTo.md} {
+    margin-bottom: 40px;
+    font-size: 24px;
+  }
 `
 
 const SocialList = styled.div`
@@ -65,9 +75,14 @@ const SocialList = styled.div`
     font-size: 12px;
   }
   a + a {
-    margin-left: 12px;
+    margin-left: 60px;
     ${respondTo.md} {
       margin-left: 30px;
+    }
+  }
+  ${respondTo.md} {
+    a {
+      width: 30px;
     }
   }
 `

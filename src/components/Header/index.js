@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import LinksList from './LinksList';
+import LinksListMobile from './LinksListMobile';
 import ConnectButton from './ConnectButton';
 import LanguageButton from './LanguageButton';
 import { respondTo } from '../../utils/responsive';
-import { lockWindow } from '../../utils/methods';
 import { colors } from '../../constants/colors';
 import useWording from '../../utils/useWording';
 
@@ -18,38 +18,23 @@ const Header = () => {
   const prevPageYOffset = useRef(0);
   const navbarTop = useRef(0);
 
-  const [ open, setOpen ] = useState(false);
-
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);    
     return () => window.removeEventListener('scroll', handleWindowScroll);
   }, [])
 
-  function handleWindowScroll(e) {
+  function handleWindowScroll() {
     const pageYOffset = Math.max(window.pageYOffset, 0);
     const delta = pageYOffset - prevPageYOffset.current;
     navbarTop.current = navbarTop.current - delta;
     navbarTop.current = Math.max(navbarTop.current, -160);
 
     if (delta < 0) navbarTop.current = 0;
-    if (delta > 0) setOpen(false);
     fixederRef.current.style.setProperty('transition-duration', (delta < 0) ? '0.3s': '0s');
     fixederRef.current.style.setProperty('transform', `translateY(${navbarTop.current}px)`);
 
     prevPageYOffset.current = pageYOffset;
   }
-
-  const handleCloseLinksMenu = () => {
-    setOpen(false);
-  }
-
-  const handleToggleLinksMenu = () => {
-    setOpen(!open);
-  }
-
-  useEffect(() => {
-    lockWindow(open);
-  }, [open])
 
 
   return (
@@ -60,30 +45,26 @@ const Header = () => {
             <img src="/images/header-logo.svg" alt="" />
           </Link>
           <Side>
-            <MenuWrapper className="menu" open={open}>
-              <LinksList data={wording.links} onLinkClick={handleCloseLinksMenu} />
+            <MenuWrapper className="menu">
+              <LinksList className="link-list" data={wording.links} />
               {/* <SocialList data={wording.socials} /> */}
             </MenuWrapper>
-            <MenuButton open={open} onClick={handleToggleLinksMenu}>
-              <div></div>
-              <div></div>
-              <div></div>
-            </MenuButton>
             <Buttonbar>
               <ConnectButton />
               <LanguageButton className="lang" />
             </Buttonbar>
           </Side>
         </Wrapper>
+        <LinksListMobile data={wording.links} />
       </Fixeder>
     </Root>
   )
 }
 
 const Root = styled.header`
-  height: 88px;
+  height: 96px;
   ${respondTo.md} {
-    height: 72px;
+    height: 54px;
   }
 `
 
@@ -93,14 +74,15 @@ const Fixeder = styled.div`
   left: 0;
   padding: 0px 24px;
   width: 100%;
-  height: 88px;
+  height: 96px;
   z-index: 5;
   box-sizing: border-box;
   color: ${colors.white};
   background-color: ${colors.mainColor};
   transition: transform .3s ease;
   ${respondTo.md} {
-    height: 72px;
+    padding: 0;
+    height: 54px;
   }
 `
 
@@ -116,7 +98,7 @@ const Wrapper = styled.div`
   transition: all .3s ease ${({time}) => time}ms;
   box-sizing: border-box;
   ${respondTo.md} {
-    padding: 0;
+    padding: 0 20px;
   }
   .logo {
     position: relative;
@@ -125,7 +107,7 @@ const Wrapper = styled.div`
     width: 200px;
     z-index: 3;
     ${respondTo.md} {
-      width: 75px;
+      width: 108px;
     }
     img {
       width: 100%;
@@ -133,11 +115,14 @@ const Wrapper = styled.div`
     }
   }
   .menu {
-    /* width: 100%; */
     height: 100%;
     box-sizing: border-box;
     ${respondTo.md} {
       height: auto;
+    }
+    .link-list {
+      display: flex;
+      ${respondTo.md} {display: none; }
     }
   }
 `
@@ -148,6 +133,9 @@ const Side = styled.div`
   align-items: center;
   position: relative;
   width: calc(100% - 240px);
+  ${respondTo.md} {
+    width: auto;
+  }
 `
 
 const MenuWrapper = styled.div`
@@ -179,34 +167,6 @@ const MenuWrapper = styled.div`
     `}
   }
 `
-
-const MenuButton = styled.button`
-  display: none;
-  border: 0;
-  height: 48px;
-  margin-right: 12px;
-  background: transparent;
-  z-index: 4;
-  > div {
-    margin: auto;
-    width: 18px;
-    height: 2px;
-    background: #FFF;
-    transition: all .3s ease;
-    & + div {
-      margin-top: 4px;
-    }
-    ${({open}) => open && css`
-      &:first-child { transform: translateY(6px) rotate(45deg);}
-      &:nth-child(2) { opacity: 0; }
-      &:last-child { transform: translateY(-6px) rotate(-45deg);}
-    `}
-  }
-  ${ respondTo.md } {
-    display: block;
-  }
-`
-
 const Buttonbar = styled.div`
   display: flex;
   align-items: center;

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { css } from 'styled-components';
 import { colors } from '../../constants/colors';
+import { respondTo } from '../../utils/responsive';
 
 const LanguageButton = ({ ...props }) => {
   const { lang } = useSelector(state => state.language);
@@ -10,6 +11,7 @@ const LanguageButton = ({ ...props }) => {
   return (
     <Root {...props}>
       <Link active={lang !== 'en'} href="/">EN</Link>
+      <div className="slice">/</div>
       <Link active={lang !== 'zh-TW'}href="/zh-TW">中文</Link>
     </Root>
   )
@@ -17,6 +19,16 @@ const LanguageButton = ({ ...props }) => {
 
 const Root = styled.div`
   display: flex;
+  align-items: center;
+  > .slice {
+    display: none;
+    margin: 0 2px;
+    color: ${colors.brown};
+    font-size: 12px;
+    ${respondTo.md} {
+      display: block;
+    }
+  }
 `
 
 const Link = styled.a`
@@ -35,6 +47,12 @@ const Link = styled.a`
     color: ${colors.green};
     pointer-events: auto;
   `}
+  ${respondTo.md} {
+    padding: 0;
+    background-color: transparent;
+    color: ${colors.brown};
+    font-size: 12px;
+  }
 `
 
 export default LanguageButton;

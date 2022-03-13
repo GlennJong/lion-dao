@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import useConnectWallet from '../../utils/useConnectWallet';
 import Web3 from 'web3';
 import { colors } from '../../constants/colors';
+import { respondTo } from '../../utils/responsive';
 // const web3 = new Web3(Web3.givenProvider);
 // const contractABI = require("../../contract-abi.json");
 // const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS
@@ -61,12 +62,18 @@ const Root = styled.div`
 const WalletButton = styled.button`
   border: 1px solid ${colors.green};
   border-radius: 12px;
-  padding: 8px 24px;
+  padding: 0 24px;
   font-size: 16px;
   height: 38px;
   color: ${colors.green};
   background: transparent;
   white-space: nowrap;
+  ${respondTo.md} {
+    border-radius: 8px;
+    padding: 0 14px;
+    height: 26px;
+    font-size: 12px;
+  }
 `
 
 

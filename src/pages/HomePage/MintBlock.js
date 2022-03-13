@@ -89,10 +89,6 @@ const Root = styled.div`
         color: ${colors.brown};
       }
     }
-    ${respondTo.md} {
-      margin-bottom: 16px;
-      font-size: 16px;
-    }
   }
   .hint {
     margin-top: 16px;
@@ -100,6 +96,9 @@ const Root = styled.div`
     font-size: 16px;
     font-family: 'Roboto';
     font-weight: 300;
+    ${respondTo.md} {
+      font-size: 12px;
+    }
   }
   .buttonbar {
     text-align: center;

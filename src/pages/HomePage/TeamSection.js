@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import Container from '../../components/Container';
 import { colors } from '../../constants/colors';
+import { respondTo } from '../../utils/responsive';
 import useWording from '../../utils/useWording';
 
 const TeamSection = () => {
@@ -26,6 +27,7 @@ const TeamSection = () => {
                   <img src={ item.image } alt="" />
                   <div className="name">{ item.name }</div>
                   <div className="title">{ item.title }</div>
+                  <p className="content">{ item.content }</p>
                 </MainItem>
               </li>
             ) }
@@ -56,6 +58,9 @@ const Root = styled.div`
 const Wrapper = styled(Container)`
   position: relative;
   display: flex;
+  ${respondTo.md} {
+    display: block;
+  }
 `
 
 const Title = styled.div`
@@ -63,7 +68,11 @@ const Title = styled.div`
   margin-left: 12px;
   font-size: 32px;
   color: ${colors.green};
-
+  ${respondTo.md} {
+    margin-bottom: 80px;
+    text-align: center;
+    font-size: 24px;
+  }
 `
 
 const Main = styled.div`
@@ -73,14 +82,25 @@ const Main = styled.div`
   width: 60%;
   box-sizing: border-box;
   background-color: #F5F1E7;
+  ${respondTo.md} {
+    width: 100%;
+    padding-top: 80px;
+    padding-right: 0;
+  }
   ul {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -16px;
+    ${respondTo.md} {
+      margin: 0;
+    }
     > li {
       width: 50%;
       padding: 0 16px;
       box-sizing: border-box;
+      ${respondTo.md} {
+        width: 100%;
+      }
     }
   }
 `
@@ -91,6 +111,9 @@ const Side = styled.div`
   padding-left: 80px;
   box-sizing: border-box;
   background: #F0EADC;
+  ${respondTo.md} {
+    display: none;
+  }
   > .sticky {
     position: -webkit-sticky;
     position: sticky;
@@ -121,6 +144,30 @@ const MainItem = styled.div`
   .title {
     color: ${colors.green};
     font-size: 14px;
+    ${respondTo.md} {
+      margin-bottom: 18px;
+    }
+  }
+  .content {
+    display: none;
+    margin: 0 auto;
+    padding-top: 20px;
+    text-align: center;
+    color: ${colors.green};
+    white-space: break-spaces;
+    width: 230px;
+    font-size: 12px;
+    line-height: 18px;
+    ${respondTo.md} {
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+      ${({ active }) => active && css`
+        border-top: 1px solid ${colors.brown};
+        max-height: 100vh;
+      `}
+    }
   }
 `
 const SideItem = styled.div`

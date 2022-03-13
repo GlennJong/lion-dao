@@ -50,6 +50,9 @@ const MintSection = () => {
 const Root = styled.div`
   padding: 200px 0;
   box-sizing: border-box;
+  ${respondTo.md} {
+    padding: 90px 0;
+  }
 `
 
 const PurchaseBlock = styled(Container)`
@@ -75,6 +78,9 @@ const Card = styled.div`
     max-width: 100%;
     height: auto;
     box-shadow: 16px 16px 0px ${colors.brown};
+    ${respondTo.md} {
+      width: 200px;
+    }
   }
 `
 
@@ -91,7 +97,6 @@ const Mint = styled.div`
     pointer-events: none;
   `}
   ${respondTo.md} {
-    margin-top: 68px;
     width: 100%;
   }
 `
@@ -101,6 +106,9 @@ const MintInfo = styled.div`
     font-size: 32px;
     text-transform: uppercase;
     color: ${colors.green};
+    ${respondTo.md} {
+      font-size: 24;
+    }
   }
   > .slice {
     display: block;
@@ -114,6 +122,12 @@ const MintInfo = styled.div`
     color: ${colors.brown};
     font-size: 16px;
     text-align: center;
+    ${respondTo.md} {
+      margin: 0 auto;
+      margin-bottom: 36px;
+      width: 230px;
+      font-size: 12px;
+    }
   }
 `
 

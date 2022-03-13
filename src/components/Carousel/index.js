@@ -65,10 +65,6 @@ const Root = styled.div`
       background: ${colors.brown};
       opacity: .15;
       transition: all .3s ease;
-      ${respondTo.md} {
-        width: 16px;
-        height: 4px;
-      }
     }
     .slick-active button:before {
       color: transparent;

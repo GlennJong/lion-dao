@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Link from '../../components/CustomLink';
 import SocialItem from '../../components/SocialItem';
 import { colors } from '../../constants/colors';
+import { respondTo } from '../../utils/responsive';
 import useWording from '../../utils/useWording';
 
 const HeadingSection = () => {
@@ -10,14 +11,15 @@ const HeadingSection = () => {
   return (
     <Root>
       <Heading>
-        <img src="/images/homepage-heading.png" alt="" />
+        <img className="desktop" src="/images/homepage-heading.png" alt="" />
+        <img className="mobile" src="/images/homepage-heading-m.png" alt="" />
       </Heading>
       <Left>{ wording.side }</Left>
-      <Right>
+      <SocialBar>
         { wording.social.map((item, i) =>
           <SocialItem key={i} icon={item.icon} href={item.link} target="_blank" />
         ) }
-      </Right>
+      </SocialBar>
       <Mint>
         <Link to="/?to=mint">Mint</Link>
       </Mint>
@@ -33,6 +35,21 @@ const Heading = styled.div`
   position: relative;
   padding: 0 120px;
   box-sizing: border-box;
+  ${respondTo.md} {
+    padding: 0;
+  }
+  .desktop {
+    display: block;
+    ${respondTo.md} {
+      display: none;
+    }
+  }
+  .mobile {
+    display: none;
+    ${respondTo.md} {
+      display: block;
+    }
+  }
   img {
     display: block;
     width: 100%;
@@ -40,7 +57,7 @@ const Heading = styled.div`
   }
 `
 
-const Right = styled.div`
+const SocialBar = styled.div`
   position: absolute;
   top: 50%;
   right: 12px;
@@ -67,6 +84,27 @@ const Right = styled.div`
   &:after {
     top: 100%;
   }
+  ${respondTo.md} {
+    position: relative;
+    right: auto;
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    background-color: ${colors.green};
+    padding: 60px 0;
+    a {
+      width: 30px;
+      color: ${colors.mainColor};
+    }
+
+    &:before, &:after {
+      content: none;
+    }
+    > a + a {
+      margin: 0;
+      margin-left: 30px;
+    }
+  }
 `
 const Left = styled.div`
   position: absolute;
@@ -76,6 +114,9 @@ const Left = styled.div`
   transform: rotate(90deg) translateX(-70%) translateY(-50%);
   color: ${colors.green};
   font-size: 16px;
+  ${respondTo.md} {
+    display: none;
+  }
 `
 
 const Mint = styled.div`
@@ -94,6 +135,9 @@ const Mint = styled.div`
     font-size: 16px;
     background-color: ${colors.mainColor};
     color: ${colors.green};
+  }
+  ${respondTo.md} {
+    display: none;
   }
 `
 
