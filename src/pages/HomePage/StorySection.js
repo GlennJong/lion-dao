@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
+import Carousel from '../../components/Carousel';
 import { colors } from '../../constants/colors';
+import { respondFrom, respondTo } from '../../utils/responsive';
 import { scrollTo } from '../../utils/scrollTo';
 import useWording from '../../utils/useWording';
 
@@ -44,34 +46,47 @@ const StorySection = () => {
   }
   
   return (
-    <Root ref={rootRef} qty={wording.length} id="meta">
-      <StoryCarousel>
-        <Main>
-          { wording.map((child, i) =>
-            <MainItem key={i} active={currentIndex === i}>
-              <div className="content">
-                <img src={child.photo} alt="" />
-                <p>{ child.content }</p>
-              </div>
-            </MainItem>)
-          }
-          <Dots>
-            { wording.map((_, i) =>
-              <Dot key={i}
-                data-index={i}
-                active={currentIndex === i}
-                onClick={handleClickSide} />
+    <Root id="meta">
+      <StoryWrapper ref={rootRef} qty={wording.length}>
+        <StoryBoard>
+          <Main>
+            { wording.map((child, i) =>
+              <MainItem key={i} active={currentIndex === i}>
+                <div className="content">
+                  <img src={child.photo} alt="" />
+                  <p>{ child.content }</p>
+                </div>
+              </MainItem>)
+            }
+            <Dots>
+              { wording.map((_, i) =>
+                <Dot key={i}
+                  data-index={i}
+                  active={currentIndex === i}
+                  onClick={handleClickSide} />
+              ) }
+            </Dots>
+          </Main>
+          <Side>
+            { wording.map((item, i) => 
+              <SideItem qty={wording.length} key={i} data-index={i} active={currentIndex === i}
+                onClick={handleClickSide}>
+                <img src={item.photo} alt="" />
+              </SideItem>
             ) }
-          </Dots>
-        </Main>
-        <Side>
+          </Side>
+        </StoryBoard>
+      </StoryWrapper>
+      <StoryCarousel>
+        <Carousel>
           { wording.map((item, i) => 
-            <SideItem qty={wording.length} key={i} data-index={i} active={currentIndex === i}
-              onClick={handleClickSide}>
-              <img src={item.photo} alt="" />
-            </SideItem>
+            <StoryItem key={i}>
+              <img src={ item.photo } alt="" />
+              <p>{ item.content }</p>
+            </StoryItem>
           ) }
-        </Side>
+        </Carousel>
+        <img className="wall" src="/images/story-wall.png" alt="" />
       </StoryCarousel>
     </Root>
   )
@@ -79,14 +94,53 @@ const StorySection = () => {
 
 const Root = styled.div`
   background-color: ${colors.darkMainColor};
-  height: ${({ qty }) => qty * 100}vh;
 `
 
-const StoryCarousel = styled.div`
+const StoryWrapper = styled.div`
+  height: ${({ qty }) => qty * 100}vh;
+  ${respondTo.md} {
+    display: none;
+  }
+`
+
+const StoryBoard = styled.div`
   display: flex;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+`
+
+const StoryCarousel = styled.div`
+  display: none;
+  padding-top: 70px;
+  ${respondTo.md} {
+    display: block;
+  }
+  .wall {
+    display: block;
+    margin-top: 40px;
+    width: 100%;
+    height: auto;
+    filter: grayscale(1);
+  }
+`
+
+const StoryItem = styled.div`
+  min-height: 50vh;
+  img {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: 286px;
+    height: auto;
+    box-shadow: 16px 16px 0px ${colors.mainColor};
+  }
+  p {
+    margin: 0 auto;
+    width: 245px;
+    font-size: 12px;
+    color: ${colors.green};
+    text-align: center;
+  }
 `
 
 const Main = styled.div`
