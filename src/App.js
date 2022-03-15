@@ -35,7 +35,7 @@ const App = ({ wording, Router = BrowserRouter }) => {
     <Provider store={store}>
       <LanguageHelper />
       <Helmet>
-        <title>Block Banana</title>
+        <title>Lion DAO</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet"></link>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet"></link>
