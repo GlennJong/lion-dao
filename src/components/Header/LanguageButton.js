@@ -1,18 +1,30 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { css } from 'styled-components';
 import { colors } from '../../constants/colors';
 import { respondTo } from '../../utils/responsive';
+import language from "../../store/language";
+import LanguageHelper from '../LanguageHelper';
 
 const LanguageButton = ({ ...props }) => {
   const { lang } = useSelector(state => state.language);
+  const [ selectedLang, setSelectedLang ] = useState(null);
+
+  function handleClickLink(e) {
+    const lang = e.currentTarget.dataset.lang;
+    setSelectedLang(lang);
+  }
   
   return (
     <Root {...props}>
-      <Link active={lang !== 'en'} href="/">EN</Link>
+      { selectedLang &&
+        <LanguageHelper selectedLang={selectedLang} />
+      }
+      <LinkItem data-lang="en" active={lang !== 'en'} to="/" onClick={handleClickLink}>EN</LinkItem>
       <div className="slice">/</div>
-      <Link active={lang !== 'zh-TW'}href="/zh-TW">中文</Link>
+      <LinkItem data-lang="zh-TW" active={lang !== 'zh-TW'} to="/zh-TW" onClick={handleClickLink}>中文</LinkItem>
     </Root>
   )
 }
@@ -31,7 +43,7 @@ const Root = styled.div`
   }
 `
 
-const Link = styled.a`
+const LinkItem = styled(Link)`
   display: flex;
   align-items: center;
   border-radius: 12px;

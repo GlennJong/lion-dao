@@ -147,7 +147,7 @@
     "header": {
       "links": [
         { "to": "/?to=meta", "title": "META" },
-        { "to": "/?to=team", "title": "TEAM" },
+        { "to": "/?to=team", "title": "團隊" },
         { "to": "/?to=mint", "title": "MINT" },
         { "to": "/?to=community", "title": "COMMUNITY" }
       ]
