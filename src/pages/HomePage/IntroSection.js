@@ -24,6 +24,7 @@ const IntroSection = () => {
 }
 
 const Root = styled.div`
+  padding-bottom: 48px;
 `
 
 const Item = styled.div`

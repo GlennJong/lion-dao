@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from '../../components/CustomLink';
-import SocialItem from '../../components/SocialItem';
 import { colors } from '../../constants/colors';
 import { respondTo } from '../../utils/responsive';
 import useWording from '../../utils/useWording';
@@ -15,11 +14,6 @@ const HeadingSection = () => {
         <img className="mobile" src="/images/homepage-heading-m.png" alt="" />
       </Heading>
       <Left>{ wording.side }</Left>
-      <SocialBar>
-        { wording.social.map((item, i) =>
-          <SocialItem key={i} icon={item.icon} href={item.link} target="_blank" />
-        ) }
-      </SocialBar>
       <Mint>
         <Link to="/?to=mint">Mint</Link>
       </Mint>
@@ -57,55 +51,6 @@ const Heading = styled.div`
   }
 `
 
-const SocialBar = styled.div`
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  display: flex;
-  flex-direction: column;
-  padding: 50px 0;
-  color: ${colors.green};
-  font-size: 16px;
-  transform: translateY(-70%);
-  a + a {
-    margin-top: 26px;
-  }
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    width: 1px;
-    height: 30px;
-    background-color: ${colors.green};
-  }
-  &:before {
-    bottom: 100%;
-  }
-  &:after {
-    top: 100%;
-  }
-  ${respondTo.md} {
-    position: relative;
-    right: auto;
-    transform: none;
-    flex-direction: row;
-    justify-content: center;
-    background-color: ${colors.green};
-    padding: 60px 0;
-    a {
-      width: 30px;
-      color: ${colors.mainColor};
-    }
-
-    &:before, &:after {
-      content: none;
-    }
-    > a + a {
-      margin: 0;
-      margin-left: 30px;
-    }
-  }
-`
 const Left = styled.div`
   position: absolute;
   top: 50%;

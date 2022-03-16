@@ -10,7 +10,7 @@ const Carousel = ({ className='', controller=true, children }) => {
     arrows: false,
     infinite: true,
     dots: true,
-    slidesToShow: 1,
+    slidesToShow: 1
   };
 
   function handleClickArrowButton(e) {
@@ -42,8 +42,6 @@ const Carousel = ({ className='', controller=true, children }) => {
 const Root = styled.div`
   position: relative;
   .slick-dots {
-    position: absolute;
-    bottom: 5%;
     z-index: 1;
     li, button {
       width: auto;

@@ -118,7 +118,7 @@ const StoryCarousel = styled.div`
   }
   .wall {
     display: block;
-    margin-top: 40px;
+    margin-top: 60px;
     width: 100%;
     height: auto;
     filter: grayscale(1);
@@ -126,7 +126,7 @@ const StoryCarousel = styled.div`
 `
 
 const StoryItem = styled.div`
-  min-height: 50vh;
+  padding-bottom: 12px;
   img {
     margin: 0 auto;
     margin-bottom: 30px;
