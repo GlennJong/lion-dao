@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import Carousel from '../../components/Carousel';
 import { colors } from '../../constants/colors';
-import { respondFrom, respondTo } from '../../utils/responsive';
+import { respondTo } from '../../utils/responsive';
 import { scrollTo } from '../../utils/scrollTo';
 import useWording from '../../utils/useWording';
 

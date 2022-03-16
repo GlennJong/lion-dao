@@ -24,6 +24,7 @@ const HomePage = () => {
       <MintSection />
       <SocialSection />
       <MintButton to="/?to=mint">{ wording.mint_button }</MintButton>
+      <Company>{ wording.side }</Company>
       <SocialBar>
         { wording.social.map((item, i) =>
           <SocialItem key={i} icon={item.icon} href={item.link} target="_blank" />
@@ -66,6 +67,20 @@ const MintButton = styled(Link)`
   display: none;
   ${respondTo.md} {
     display: block;
+  }
+`
+
+
+const Company = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 12px;
+  transform-origin: left bottom;
+  transform: rotate(90deg) translateX(-50%) translateY(-50%);
+  color: ${colors.green};
+  font-size: 16px;
+  ${respondTo.md} {
+    display: none;
   }
 `
 

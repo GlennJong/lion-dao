@@ -3,17 +3,14 @@ import styled from 'styled-components';
 import Link from '../../components/CustomLink';
 import { colors } from '../../constants/colors';
 import { respondTo } from '../../utils/responsive';
-import useWording from '../../utils/useWording';
 
 const HeadingSection = () => {
-  const wording = useWording('homepage.heading');
   return (
     <Root>
       <Heading>
         <img className="desktop" src="/images/homepage-heading.png" alt="" />
         <img className="mobile" src="/images/homepage-heading-m.png" alt="" />
       </Heading>
-      <Left>{ wording.side }</Left>
       <Mint>
         <Link to="/?to=mint">Mint</Link>
       </Mint>
@@ -48,19 +45,6 @@ const Heading = styled.div`
     display: block;
     width: 100%;
     height: auto;
-  }
-`
-
-const Left = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform-origin: left bottom;
-  transform: rotate(90deg) translateX(-70%) translateY(-50%);
-  color: ${colors.green};
-  font-size: 16px;
-  ${respondTo.md} {
-    display: none;
   }
 `
 
