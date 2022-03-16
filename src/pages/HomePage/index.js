@@ -78,7 +78,7 @@ const SocialBar = styled.div`
   padding: 50px 0;
   color: ${colors.green};
   font-size: 16px;
-  transform: translateY(-70%);
+  transform: translateY(-50%);
   a + a {
     margin-top: 26px;
   }
