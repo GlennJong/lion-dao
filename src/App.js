@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { createStore, combineReducers } from 'redux';
@@ -16,7 +17,6 @@ import LanguageHelper from './components/LanguageHelper';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import Header from './components/Header';
-import styled from 'styled-components';
 
 const reducer = combineReducers({
   app: appStore.reducer,

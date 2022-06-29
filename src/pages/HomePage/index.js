@@ -25,11 +25,11 @@ const HomePage = () => {
       <SocialSection />
       <MintButton to="/?to=mint">{ wording.mint_button }</MintButton>
       <Company>{ wording.side }</Company>
-      <SocialBar>
+      {/* <SocialBar>
         { wording.social.map((item, i) =>
           <SocialItem key={i} icon={item.icon} href={item.link} target="_blank" />
         ) }
-      </SocialBar>
+      </SocialBar> */}
     </Root>
   )
 }

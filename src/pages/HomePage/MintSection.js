@@ -10,7 +10,7 @@ import useWording from "../../utils/useWording";
 
 const MintSection = () => {
   const wording = useWording('homepage.mint')
-  const status = 'connect';
+  const status = 'disconnect';
   // const status = 'connect';
   // const { status, onConnect } = useConnectWallet();
   
@@ -87,6 +87,7 @@ const Card = styled.div`
 const Mint = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0 auto;
   margin-top: 24px;
   width: 50%;
